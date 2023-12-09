@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Course</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+       
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-position: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 29px;
+            text-align: center;
+            color:#e79a0b;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the "Apply here" link */
+        .apply-link {
+            background-color: #333;
+            padding: 10px;
+            margin: 0 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Style for the dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        /* Style for dropdown options */
+        .dropdown-content a {
+            color: #333;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Show the dropdown content on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+            
+        }
+
+
+
+        a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #555;
+            color:#fff;
+        }
+
+        .profile {
+            position: relative;
+        }
+
+        #profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            
+        }
+
+       
+
+        .logout {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #d9534f;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        .department-title {
+            text-align: center;
+            background-color: #555;
+            color: white;
+            padding: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+    .back-button {
+            margin-top: 10px;
+        }
+
+        .back-button a {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            background-color: #d90000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>UniTAHub</h1>
+            
+            <nav>
+                <a href="/courses">Course Management</a>
+                <a href="/depttaApplicationreview">TA Application Review</a>
+                <a href="/taselctionstatus">TA Selection Status</a>
+                <a href="#">TA Matching</a>
+                <a href="/deptchat">Chat</a>
+            </nav>
+            <div class="profile">
+                <a href="/dept_profile"><img src="/static/images/profile.png" alt="Profile Icon" id="profile-icon"></a>
+                <div class="profile-popup" id="profile-popup">
+                    <p><strong>{{ username }}</strong></p>
+                    
+                    <!-- Add other user details here -->
+                </div>
+            </div>
+            <a class="logout" href="/">Logout</a>
+            
+        </div>
+        <div class="department-title">DEPARTMENT STAFF</div>
+    </header>
+   
+    <h1>Edit Course</h1>
+    
+    <form method="POST">
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" value="{{ course.subject }}" required><br>
+        
+        <label for="crn">CRN:(5 digit Number)</label>
+        <input type="text" name="crn" value="{{course.crn}}" required><br>
+        
+        <label for="course_number">Course Number:(4 Digit number between 5000 to 6000)</label>
+        <input type="text" name="course_number" value="{{course.couse}}"" required><br>
+        
+        
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="{{ course.title }}" required><br>
+        
+        <label for="term">Term:</label>
+        <select name="term" required value="{{course.term}}">
+            <option value="Spring 2024">Spring 2024</option>
+            <option value="Summer 2024">Summer 2024</option>
+            <option value="Fall 2024">Fall 2024</option>
+        </select><br>
+        
+        <label for="deadline">Deadline (mm/dd/yyyy):</label>
+        <input type="date" name="deadline" pattern="\d{2}/\d{2}/\d{4}" placeholder="mm/dd/yyyy" value="{{course.deadline}}" required title="Enter a date in the format mm/dd/yyyy"><br>
+        
+        <button type="submit">Save</button>
+        <br>
+        <br>
+        <div class="back-button">
+            <a href="/courses">Back</a>
+        </div>
+    </form>
+
+</body>
+</html>

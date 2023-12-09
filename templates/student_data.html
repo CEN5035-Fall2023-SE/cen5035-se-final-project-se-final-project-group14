@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instructor</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"> 
+    <style>
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    background-position: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 29px;
+    color: #e79a0b;
+}
+
+h3 {
+    font-size: 17px;
+    color: #e79a0b;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style for the "Apply here" link */
+.apply-link {
+    background-color: #333;
+    padding: 10px;
+    margin: 0 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+/* Style for dropdown options */
+.dropdown-content a {
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.profile {
+    position: relative;
+}
+
+#profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.logout {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #d9534f;
+    transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+    background-color: #c9302c;
+}
+
+.department-title {
+    text-align: center;
+    background-color: #555;
+    color: white;
+    padding: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.back-button a {
+    text-decoration: none;
+    color: #0c0c0c;
+    background-color: #8a8989;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button a:hover {
+    background-color: #555;
+    color: #fff;
+}
+main {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .records-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .record-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: calc(33.33% - 20px);
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .record-item h4 {
+            color: #007BFF;
+            margin: 0;
+        }
+
+        .record-item span {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .name{
+            color:#c9302c;
+        }
+        .subject,
+        
+        .znumber,
+        .feedback {
+            display: inline-block;
+            width: 100%;
+        }
+        .znumber a,
+        .subject a,
+        .feedback a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .subject a:hover,
+        .feedback a:hover {
+            text-decoration: underline;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>UniTAHub</h1>
+            
+            <nav>
+                <a href="/student_records">Students Record</a>
+                <a href="/instructorchat">Chat</a>
+            </nav>
+            <div class="profile">
+                <a href="/instructor_profile"><img src="/static/images/profile.png" alt="Profile Icon" id="profile-icon"></a>
+                <div class="profile-popup" id="profile-popup">
+                    <p><strong>{{ username }}</strong></p>
+                    
+                    <!-- Add other user details here -->
+                </div>
+            </div>
+            <a class="logout" href="/">Logout</a>
+            
+        </div>
+        <div class="department-title">Instructor</div>
+    </header>
+    <br>
+    <div class="back-button">
+        <a href="/student_records">Back</a>
+    </div>
+    <br>
+    <main>
+
+        <h2>{{ sub }}:</h2>
+
+        <div class="records-container">
+            {% for znumber,subject, name in z %}
+                <div class="record-item">
+                    
+                    <span class="name">
+                        <strong>Name:</strong>      <strong>{{ name }}</strong>
+                    </span>
+                    <span class="znumber">
+                        <strong>Znumber:</strong> <a href="{{ url_for('records', znumber=znumber,subject=subject,sub=sub) }}">{{ znumber }}</a>
+                    </span>
+                    <span class="feedback">
+                        <strong>Feedback:</strong> <a href="{{ url_for('feedback', znumber=znumber,subject=subject,sub=sub) }}">Feedback</a>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+
+    </main>
+    <footer>
+        &copy; 2023 UniTAHub
+    </footer>
+     
+
+    
+</body>
+</html>

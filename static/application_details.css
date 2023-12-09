@@ -1,0 +1,39 @@
+.container3 {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.application-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.application-info {
+    flex-grow: 1;
+}
+
+.edit-delete-buttons {
+    flex-shrink: 0;
+}
+
+a {
+    color: #0074d9;
+    text-decoration: none;
+    padding:10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    margin-top: 10px;
+    display: block;
+}

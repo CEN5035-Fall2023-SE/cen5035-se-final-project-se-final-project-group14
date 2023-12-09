@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Chat App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .left {
+            background-color: #d3e0ea;
+            text-align: left;
+        }
+
+        .right {
+            background-color: #c7e6c7;
+            text-align: right;
+        }
+
+        .message p {
+            margin: 0;
+        }
+
+        .message-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 50px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        .sent {
+            background-color: #d3e0ea;
+            text-align: left;
+        }
+
+        .received {
+            background-color: #c7e6c7;
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chat with {{type}}</h1>
+        <ul class="messages">
+            {%if messages%}
+            {% for message in messages %}
+                <div class="message {% if message.name == name %}received{% else %}sent{% endif %}">
+                    <p>{{ message.timestamp}} - {{ message.name }}: {{ message.content }}</p>
+                </div>
+            {% endfor %}
+            {%else%}
+            <p>no chats</p>
+            {%endif%}
+        </ul>
+        <form action="{{ url_for('tchat' , receiver_id=receiver_id ,type=type) }}" method="post" class="message-form">
+
+            <input type="hidden" name="sender_id" value="{{ receiver_id }}">
+            <label for="content">Message:</label>
+            <textarea id="content" name="content" required></textarea>
+            <br>
+            <button type="submit">Send</button>
+        </form>
+        <a href="{{ url_for('tacommittechat') }}" class="back-button">Back</a>
+    </div>
+
+</body>
+</html>

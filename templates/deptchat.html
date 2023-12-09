@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Chat App</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.chat-section {
+    margin-bottom: 30px;
+}
+
+.chat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-list li {
+    margin-bottom: 10px;
+}
+
+.chat-list li a {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+    padding: 12px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.chat-list li a:hover {
+    background-color: #f0f0f0;
+}
+
+.back-button {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-section">
+            <h1>Chat App - TA List</h1>
+            <ul class="chat-list">
+                {% for ta in ta_names %}
+                    <li><a href="{{ url_for('chat', receiver_id=ta.id,type='TA') }}">{{ ta.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="chat-section">
+            <h1>Chat App - TA Committee Staff</h1>
+            <ul class="chat-list">
+                {% for ta in ta_committe_names %}
+                    <li><a href="{{ url_for('chat', receiver_id=ta.id,type='TA Committe') }}">{{ ta.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="chat-section">
+            <h1>Chat App - Instructor</h1>
+            <ul class="chat-list">
+                {% for ta in instructor_names %}
+                    <li><a href="{{ url_for('chat', receiver_id=ta.id,type='Instructor') }}">{{ ta.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="{{ url_for('deptstaff') }}" class="back-button">Back</a>
+    </div>
+</body>
+</html>

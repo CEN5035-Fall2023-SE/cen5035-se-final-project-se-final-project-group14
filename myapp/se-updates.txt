@@ -1,0 +1,55 @@
+Fields in Application Form Like:
+Z number
+Enrollment status
+Expected Graduated year
+Citizen Status
+Graduate Program and Major
+these wil be include in proile, exclude in application form
+
+ta student
+Assignments --> (Subject,file,deadline,submit)
+Notifications --> (selected/un selected/assignment uploaded)
+Application status --> subject  pending
+				Not selected
+				Selected 
+Offers---> subject name , accept / decline ( notification + mail)
+	   
+
+Department Staff:
+--->Ta appication review--->Subjects list---->student name----->application form
+--> Assignments --> (Subject, file,deadline,submitted list)
+--> TA selection status --(subject/status(pending/selected) /pending(NA),selected(znumber) /z number --> details
+---->Ta matching---->Subjects list--->match option ( Ml model ) --> best match ( course number )---->student name
+
+TA Commitee member:
+login and signup
+--->Ta appication review--->Subjects list---->student name----->application form
+-->assignment 
+	-->Add assignment -- > (Subject,file,deadline)
+	-->Submitted Assisgnments --> (subject) --> students submitted (file)
+       
+
+-->TA selection :
+os   pending   select(dropdown--->Z number) + (mail, Notification) 1. madhu 
+se   selected  1.view(Z number , Name, Major, program) / edit     1. madhu 2.shalini 3. kotti 4.reddy
+
+
+
+--->Ta decision : 
+
+se ta name status( accept/deciline)
+**select another ta**
+
+
+se   ta name    decline(select another ta)
+os    ta name    pending
+ap    ta name    accepted
+                
+Instructor : 
+
+--> login and sign up 
+
+			
+
+
+

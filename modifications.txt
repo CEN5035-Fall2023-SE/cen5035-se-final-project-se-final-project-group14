@@ -1,0 +1,39 @@
+
+
+ta committee 
+
+notifications 
+When someone accepts/decline send a notification saying decision made on the offer by TA applicant 
+and chat message ( message received from so and so person )
+
+TA selection---->add finalize option for stopping to accept application.then not selected status to remaining applicant.  
+
+once finalised change in department staff near ta selection status--->status wil be Finalised
+
+department staff 
+
+ta matching 
+Subject list [  z23744520 ] recommend button ---> notification to committee members
+TA Selection------>add delete option for deleting selected student from list
+
+
+Instructors 
+
+records lo Z NUMBER     PAKKANA FEEDBACK BUTTON
+IF WE CLICK ON Z NUMBER 
+
+'''
+z number 
+name 
+CGPA 
+
+subject 1 [feedback]
+subject 2 [feedback]
+
+'''
+
+feedback button should be editable and add more points
+she did okay
+she is not doing good
+
+Subject  subject name - spring 2024

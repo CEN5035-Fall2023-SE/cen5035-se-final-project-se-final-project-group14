@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniTAHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-position: center;
+            
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 29px;
+            color: #e79a0b;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .apply-link {
+            background-color: #333;
+            padding: 10px;
+            margin: 0 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .profile {
+            position: relative;
+        }
+
+        #profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #d9534f;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        .department-title {
+            text-align: center;
+            background-color: #555;
+            color: white;
+            padding: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background-color: #555;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        h2 {
+            color: #e79a0b;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-left:200px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 60%;
+            padding: 10px;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            margin-left:200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type='submit']{
+            width:20%;
+            background-color: #e76e0b;
+            color:#fff;
+
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left:200px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .course-input {
+            width: calc(100% - 90px);
+            margin-right: 10px;
+        }
+
+        .multiple {
+            margin-top: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>UniTAHub</h1>
+            <nav>
+                <div class="dropdown">
+                    <div class="apply-link">Apply here</div>
+                    <div class="dropdown-content">
+                        {% for course in courses %}
+                        <a href="{{ url_for('taApplication', course=course) }}">{{ course }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="/application_details">My Applications</a>
+                <a href="#">Application Tracking</a>
+                <a href="#">Notifications</a>
+                <a href="#">Accept/Decline Offers</a>
+                <a href="#">Chat</a>
+            </nav>
+            <div class="profile">
+                <a href="/profile"><img src="/static/images/profile.png" alt="Profile Icon" id="profile-icon"></a>
+                <div class="profile-popup" id="profile-popup">
+                    <p><strong>{{ username }}</strong></p>
+                    <!-- Add other user details here -->
+                </div>
+            </div>
+            <a class="logout" href="/">Logout</a>
+        </div>
+        <div class="department-title">TA APPLICANT</div>
+    </header>
+
+    <form method="POST" action="/submit_form/{{course}}" enctype="multipart/form-data">
+        <div class="back-button">
+            <a href="/userpage">Back</a>
+        </div>
+        <h2>Application Form - {{ course }} - {{term}}</h2>
+
+        <label for="credits_completed_at_fau">Number of Credits Completed at FAU:</label>
+        <input type="number" id="credits_completed_at_fau" name="credits_completed_at_fau"><br>
+
+        <label for="credits_plan_to_register">Number of Credits You Plan to Register:</label>
+        <input type="number" id="credits_plan_to_register" name="credits_plan_to_register" required><br>
+
+        
+
+        <label for="undergraduate_major">Undergraduate Major:</label>
+        <input type="text" id="undergraduate_major" name="undergraduate_major" required><br>
+
+        <label for="courses_served_as_ta">Provide List of Courses You Have Already Served as a TA. Include course number, course name, year, semester; separate multiple courses with a ';'. Enter NA if you don't have any.</label>
+        <div id="courses-container">
+            <input type="text" id="courses_served_as_ta" name="courses_served_as_ta" class="course-input" required>
+            <button type="button" id="add-course">Add Course</button>
+        </div>
+
+        <label for="graduate_courses_completed_at_fau">List of Graduate Courses Completed at FAU with 'A' Grade. Include course number, course name, year, semester; separate multiple courses with a ';'. Enter NA if you don't have any.:</label>
+        <div id="graduate-courses-container">
+            <input type="text" id="graduate_courses_completed_at_fau" name="graduate_courses_completed_at_fau" class="course-input" required>
+            <button type="button" id="add-graduate-course">Add Course</button>
+        </div>
+
+        <label for="undergraduate_courses_completed_at_fau">List of Undergraduate Courses Completed at FAU with 'A' Grade. Include course number, course name, year, semester; separate multiple courses with a ';'. Enter NA if you don't have any.:</label>
+        <div id="undergraduate-courses-container">
+            <input type="text" id="undergraduate_courses_completed_at_fau" name="undergraduate_courses_completed_at_fau" class="course-input" required>
+            <button type="button" id="add-undergraduate-course">Add Course</button>
+        </div>
+
+        <label for="is_phd_or_ms_thesis_student">Are you a Ph.D. or M.S. Thesis student?</label>
+        <input type="checkbox" id="is_phd_or_ms_thesis_student" name="is_phd_or_ms_thesis_student"><br>
+
+        <label for="document">Upload documents such as transcripts or recommendation letters. (optional)</label>
+        <input type="file" name="document" accept=".pdf, .doc, .docx" multiple><br>
+
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('add-course').addEventListener('click', function () {
+            var coursesInput = document.getElementById('courses_served_as_ta');
+            var newCourse = prompt('Enter another course:');
+            if (newCourse !== null && newCourse !== '') {
+                if (coursesInput.value !== '') {
+                    coursesInput.value += ', ';
+                }
+                coursesInput.value += newCourse;
+            }
+        });
+
+        document.getElementById('add-graduate-course').addEventListener('click', function () {
+            var graduateCoursesInput = document.getElementById('graduate_courses_completed_at_fau');
+            var newCourse = prompt('Enter another graduate course:');
+            if (newCourse !== null && newCourse !== '') {
+                if (graduateCoursesInput.value !== '') {
+                    graduateCoursesInput.value += ', ';
+                }
+                graduateCoursesInput.value += newCourse;
+            }
+        });
+
+        document.getElementById('add-undergraduate-course').addEventListener('click', function () {
+            var undergraduateCoursesInput = document.getElementById('undergraduate_courses_completed_at_fau');
+            var newCourse = prompt('Enter another undergraduate course:');
+            if (newCourse !== null && newCourse !== '') {
+                if (undergraduateCoursesInput.value !== '') {
+                    undergraduateCoursesInput.value += ', ';
+                }
+                undergraduateCoursesInput.value += newCourse;
+            }
+        });
+    </script>
+
+</body>
+
+</html

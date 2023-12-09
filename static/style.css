@@ -1,0 +1,333 @@
+body {
+    background-image: url('/static/images/bg.jpg'); /* Replace with the path to your background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    
+    
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 5, 155, 0.3); /* Light blue color with opacity */
+    z-index: -1;
+}
+
+header {
+    background-color: #333;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 29px;
+    margin: 0;
+    color:#e79a0b;
+    
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f5aa3b;
+}
+
+.welcome-message {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 32px;
+}
+.profile {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+.profile a {
+    text-decoration: none;
+    color: rgb(103, 184, 11);
+}
+
+#profile-icon {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style for the "Apply here" link */
+.apply-link {
+    background-color: #333;
+    padding: 10px;
+    margin: 0 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+/* Style for dropdown options */
+.dropdown-content a {
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+.profile-details p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+
+.profile-details {
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #070707;
+}
+.back-link {
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #0bbe56; /* Set the background color for buttons */
+    color: #fff; /* Set the text color for buttons */
+    border: none;
+    border-radius: 5px;
+}
+
+.back-link:hover {
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #2980b9;
+}
+
+
+
+
+.container1 {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+
+
+.profile-details p strong {
+    font-weight: bold;
+    color: #e79a0b;
+}
+
+.container1 a {
+    text-decoration: none;
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect */
+.container1 a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Apply some general styling to the form */
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Set the text color for labels */
+}
+input[type="file"]
+{
+    background-color: #070707;
+}
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+
+select {
+    width: 70%;
+    padding: 9px; /* Decrease padding for smaller input size */
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: none; /* Remove border */
+    border-radius: 3px;
+    background-color: #f9f9f9; /* Set a background color for input fields */
+}
+
+input[type="submit"]
+{
+    padding: 10px;
+    cursor: pointer;
+    background-color: #be0b0b; /* Set the background color for buttons */
+    color: #fff; /* Set the text color for buttons */
+    border: none;
+    border-radius: 5px;
+}
+form {
+    background-color: #99cbd8; /* Set the background color for the form */
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add styling for the dropdown content */
+.dropdown-content {
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Add styling for the course input container */
+#courses-container,
+#graduate-courses-container,
+#undergraduate-courses-container {
+    margin-bottom: 15px;
+}
+
+.course-input {
+    width: calc(100% - 90px);
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #4caf50; /* Set the background color for buttons */
+    color: #fff; /* Set the text color for buttons */
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049; /* Change the background color on hover */
+}
+
+.logout {
+    text-decoration: none;
+    background-color: #f44336;
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: -50px;
+}
+
+.logout:hover {
+    background-color: #d32f2f;
+}
+
+/* Add this CSS to your stylesheet */
+.department-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif; 
+    font-size: 22px;
+    font-weight: bold; /* Add this line to make the text bold */
+    color: #fff;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #007bff;
+}
+
+.back-button {
+    margin-top: 10px;
+}
+
+.back-button a {
+    width: 100%;
+    padding: 10px;
+    margin-top: 4px;
+    background-color: #d90000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-button a:hover {
+    text-decoration: none;
+}

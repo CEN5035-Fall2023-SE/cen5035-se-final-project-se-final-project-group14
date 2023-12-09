@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container1 {
+            width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #3498db;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .profile-details {
+            margin-bottom: 20px;
+        }
+
+        .profile-details p {
+            margin: 10px 0;
+            color: #333333;
+        }
+
+        .edit-button, .back-link {
+            display: block;
+            width: 96%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button {
+            background-color: #27ae60;
+            color: #ffffff;
+        }
+
+        .edit-button:hover {
+            background-color: #219653;
+        }
+
+        .back-link {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        .rounded-image {
+           
+            overflow: hidden;
+        }
+
+        .rounded-image img {
+            width: 110px; /* Adjust the size as needed */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+            margin: 0 auto;
+            border-radius: 60px;
+            border: 3px solid #3498db;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container1">
+        <h2>User Profile</h2>
+        <div class="rounded-image">
+            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary">
+        </div>
+        <div class="profile-details">
+            <p><strong>Username:</strong> {{ username }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Phone Number:</strong> {{ phone_number }}</p>
+        </div>
+        <a href="/edit_instructor_profile" class="edit-button">Edit Profile</a>
+        <a href="/instructor" class="back-link">Back to Homepage</a>
+    </div>
+</body>
+</html>

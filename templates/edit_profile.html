@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/static/style.css">  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"> 
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+       
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #27ae60;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #219653;
+        }
+        .back-link {
+            background-color: #3498db;
+            color: #ffffff;
+            display: block;
+            width: 96%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <br>
+        <form method="POST" action="{{ url_for('editprofile') }}">
+            <h2>Edit Profile</h2> 
+            <label for="email">current_fau_gpa:</label>
+            <input type="text" name="current_fau_gpa"  required>
+            <label for="email">Email:</label>
+            <input type="text" name="email" value="{{ user.email }}" required>
+            
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" name="phone_number" value="{{ user.phone_number }}" required>
+            
+            <label for="department">Department:</label>
+            <input type="text" name="department" value="{{ user.department }}" required>
+            
+            <label for="level">Level:</label>
+            <input type="text" name="level" value="{{ user.level }}" required>
+            
+
+            <label for="enrollment_status">Enrollment Status:</label>
+            <select id="enrollment_status" name="enrollment_status" required>
+                <option value="New Student">New Student</option>
+                <option value="Continuing Student">Continuing Student</option>
+            </select>
+            <br>
+            <label for="expected_graduated_year">Expected Graduated Year. (e.g May 2025 )</label>
+            <input type="text" id="expected_graduated_year" name="expected_graduated_year"><br>
+
+            <label for="citizenship_status">Citizenship Status:</label>
+            <select id="citizenship_status" name="citizenship_status" required>
+                <option value="U.S Citizen">U.S Citizen</option>
+                <option value="International Student">International Student</option>
+                
+            </select>
+                <br>
+
+            <label for="graduate_program_major">Graduate Program and Major (e.g., MS CS, MS AI, PhD EE, etc)</label>
+            <input type="text" id="graduate_program_major" name="graduate_program_major" required><br>
+
+
+            <button type="submit">Save Changes</button>
+           
+        </form>
+        <a href="/profile" class="back-link">Back to Profile</a>
+    </div>
+</body>
+</html>

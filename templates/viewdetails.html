@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: brown;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #844f23;
+        }
+    </style>
+</head>
+<body>
+
+<h1>User Data</h1>
+
+<table border="1">
+    <tr>
+        <th>Username</th>
+        <th>Z Number</th>
+        <th>Enrollment Status</th>
+        <th>Expected Graduated Year</th>
+        <th>Citizenship Status</th>
+        <th>Graduate Program Major</th>
+        <th>Action</th>
+    </tr>
+    {%for data in data%}
+    <tr>
+        {%for data in data%}
+        <td>{{ data.name }}</td>
+        <td>{{ data.z_number }}</td>
+        <td>{{ data.enrollment_status }}</td>
+        <td>{{ data.expected_graduated_year }}</td>
+        <td>{{ data.citizenship_status }}</td>
+        <td>{{ data.graduate_program_major }}</td>
+        <td><a class="action-link" href="{{ url_for('delete_data', znumber=data.z_number) }}">Delete</a></td>
+           
+        {%endfor%}
+    </tr>
+    {%endfor%}
+</table>
+
+<a href="{{ url_for('taselection') }}" class="back-button">Back to TA Selection</a>
+
+</body>
+</html>
