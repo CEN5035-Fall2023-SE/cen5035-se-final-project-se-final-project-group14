@@ -12,3 +12,5 @@ Please follow the steps to run the code on your local
 6. Now type "python app.py" and press enter
 7. Now you will get the link, where the project is running on
 8. Copy the link and paste in the browser, your website is up and running. 
+
+![WhatsApp Image 2023-12-08 at 22 31 26](https://github.com/CEN5035-Fall2023-SE/cen5035-se-final-project-se-final-project-group14/assets/153320465/8b610399-e9a3-4b60-a44a-f175e3f871cc)
